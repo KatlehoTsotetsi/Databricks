@@ -1,0 +1,172 @@
+SELECT
+  *
+FROM
+  workspace.default.retail_sales;
+
+--Question 1
+SELECT
+  *
+FROM
+  workspace.default.retail_sales;
+
+--Question 2
+SELECT
+  `Transaction ID`,
+  `Date`,
+  `Customer ID`
+FROM
+  workspace.default.retail_sales;
+
+--Question 3
+SELECT DISTINCT
+  `Product Category`
+FROM
+  workspace.default.retail_sales;
+
+--Question 4
+SELECT DISTINCT
+  GENDER
+FROM
+  workspace.default.retail_sales;
+
+--Question 5
+SELECT
+  *
+FROM
+  workspace.default.retail_sales
+WHERE
+  AGE > 40;
+
+--Question 6
+SELECT
+  *
+FROM
+  workspace.default.retail_sales
+WHERE
+  `Price per Unit` BETWEEN 100 AND 500;
+
+--Question 7
+SELECT
+  *
+FROM
+  workspace.default.retail_sales
+WHERE
+  `Product Category` IN ('Beauty', 'Electronics');
+
+--Question 8
+SELECT
+  *
+FROM
+  workspace.default.retail_sales
+WHERE
+  `Product Category` NOT IN ('Clothing');
+
+--Question 9
+SELECT
+  *
+FROM
+  workspace.default.retail_sales
+WHERE
+  Quantity >= 3;
+
+--Question 10
+SELECT
+  count(`Transaction ID`) AS `Total transactions`
+FROM
+  workspace.default.retail_sales;
+
+--Question 11
+SELECT
+  round(avg(Age), 0) AS Average_Age
+FROM
+  workspace.default.retail_sales;
+
+--Question 12
+SELECT
+  sum(Quantity) Total_Quantity
+FROM
+  workspace.default.retail_sales;
+
+--Question 13
+SELECT
+  max(`Total Amount`) `Max Total Amount`
+FROM
+  workspace.default.retail_sales;
+
+--Question 14
+SELECT
+  min(`Price per Unit`) `Min Price Per Unit`
+FROM
+  workspace.default.retail_sales;
+
+--Question 15
+SELECT
+  `Product Category`,
+  count(`Transaction ID`) `Transaction Count`
+FROM
+  workspace.default.retail_sales
+GROUP BY
+  `Product Category`;
+
+--Question 16
+SELECT
+  GENDER,
+  sum(`Total Amount`) AS `Total Revenue`
+FROM
+  workspace.default.retail_sales
+GROUP BY
+  Gender;
+
+--Question 17
+SELECT
+  `Product category`,
+  ROUND(avg(`Price per Unit`), 2) Average_Price
+FROM
+  workspace.default.retail_sales
+GROUP BY
+  ALL;
+
+--Question 18
+SELECT
+  `Product category`,
+  sum(`Total Amount`) as `Total Revenue`
+FROM
+  workspace.default.retail_sales
+group by
+  `product category`
+having
+  `Total Revenue` > 10000;
+
+--Question 19
+Select
+  `Product category`,
+  round(avg(quantity), 0) as Average_quantity
+FROM
+  workspace.default.retail_sales
+group by
+  `Product category`
+having
+  Average_quantity > 2;
+
+--Question 20
+SELECT
+  `Transaction ID`,
+  `Total amount`,
+  CASE
+    WHEN `Total amount` > 1000 then 'High'
+    ELSE 'Low'
+  END AS Spending_Level
+FROM
+  workspace.default.retail_sales;
+
+--Question 21
+SELECT
+  `Customer ID`,
+  `Age`,
+  CASE
+    WHEN AGE < 30 THEN 'Youth'
+    WHEN AGE BETWEEN 30 AND 59 THEN 'Adult'
+    ELSE 'Senior'
+  END AS Age_Group
+FROM
+  workspace.default.retail_sales;
